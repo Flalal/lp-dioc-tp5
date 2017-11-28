@@ -12,10 +12,10 @@ class LoadPotion extends Fixture
     public function load(ObjectManager $manager)
     {
         $potions = [
-            new Potion('small', 1, 1),
-            new Potion('medium', 1, 1),
-            new Potion('big', 1, 1),
-            new Potion('invincible', 1, 1),
+            new Potion('s', 25, 75),
+            new Potion('m', 50, 75),
+            new Potion('l', 75, 100),
+            new Potion('ultra', 100, 100),
         ];
 
         foreach ($potions as $potion) {

@@ -32,9 +32,9 @@ class Potion
      */
     private $healthPoint;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="limit_hp",type="integer")
      */
-    private $limitHealth;
+    private $limit;
 
     /**
      * Potion constructor.
@@ -42,11 +42,27 @@ class Potion
      * @param $healthPoint
      * @param $limitHealth
      */
-    public function __construct($name, $healthPoint, $limitHealth)
+    public function __construct($name, $healthPoint, $limit)
     {
         $this->name = $name;
         $this->healthPoint = $healthPoint;
-        $this->limitHealth = $limitHealth;
+        $this->limit = $limit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLimit()
+    {
+        return $this->limit;
+    }
+
+    /**
+     * @param mixed $limit
+     */
+    public function setLimit($limit)
+    {
+        $this->limit = $limit;
     }
 
 
