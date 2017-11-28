@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +31,21 @@ class Player
      * @ORM\ManyToOne(targetEntity="Weapon")
      */
     private $currentWeapon;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Potion")
+     */
+    private $potions;
+
+    /**
+     * Player constructor.
+     * @param $potion
+     */
+    public function __construct()
+    {
+        $this->potions = new ArrayCollection();
+    }
+
 
     public function getId()
     {
@@ -65,4 +81,29 @@ class Player
     {
         $this->currentWeapon = $currentWeapon;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPotions(): Collection
+    {
+        return $this->potions;
+    }
+
+    /**
+     * @param mixed $potions
+     */
+    public function setPotions($potions)
+    {
+        $this->potions = $potions;
+    }
+
+    public function addPotion(Potion $potion){
+        $this->potions->add($potion);
+    }
+
+    public function removePotion(Potion $potion){
+        $this->potions->removeElement($potion);
+    }
+
 }
